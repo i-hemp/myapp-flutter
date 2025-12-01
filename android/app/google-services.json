@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30391450292",
+    "project_id": "myapp-flutter-firebase-one",
+    "storage_bucket": "myapp-flutter-firebase-one.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30391450292:android:def9fb64850a344ada75e1",
+        "android_client_info": {
+          "package_name": "com.hemanth.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDknIQT8q50RsSMHVAdCfONEpw7Rq6byzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

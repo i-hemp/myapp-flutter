@@ -1,0 +1,11 @@
+
+
+setx /M PATH "%PATH%;C:\Users\heman\AppData\Local\Pub\Cache\bin"
+
+
+ Firebase App Id
+web       1:30391450292:web:007420ab948e5716da75e1
+android   1:30391450292:android:def9fb64850a344ada75e1
+ios       1:30391450292:ios:18e320458ea0df78da75e1
+macos     1:30391450292:ios:18e320458ea0df78da75e1
+windows   1:30391450292:web:20f20f93496005cdda75e1
