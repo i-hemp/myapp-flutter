@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/main.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -58,13 +59,27 @@ class _LoginViewState extends State<LoginView> {
                     );
                 print(userCredential);
                 if (context.mounted) {
-                  Navigator.pushNamed(context, '/');
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const HomeView();
+                      },
+                    ),
+                    (route) => false,
+                  );
                 }
               } on FirebaseAuthException catch (e) {
                 print('Firebase auth exception: ${e.code}');
               }
             },
             child: const Text("Login"),
+          ),
+          ElevatedButton(
+            child: const Text("Register"),
+            onPressed: () => Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil('/register', (route) => false),
           ),
         ],
       ),

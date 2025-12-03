@@ -69,11 +69,12 @@ class _RegisterViewState extends State<RegisterView> {
             },
             child: Text("Register"),
           ),
-          // Text("\nAlready registered?"),
-          // ElevatedButton(
-          //   onPressed: () => Navigator.pushNamed(context, '/login'),
-          //   child: Text(' Login here'),
-          // ),
+          TextButton(
+            child: const Text("login"),
+            onPressed: () => Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil('/login', (route) => false),
+          ),
         ],
       ),
     );

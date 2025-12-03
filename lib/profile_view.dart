@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatefulWidget {
@@ -20,12 +21,34 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        backgroundColor: Colors.red[400],
+    final currUser = FirebaseAuth.instance.currentUser;
+    // appBar: AppBar(
+    //   title: const Text('Profile'),
+    //   backgroundColor: Colors.red[400],
+    // ),
+    return Material(
+      color: Colors.white,
+      child: SafeArea(
+        child: Column(
+          // Container(
+          //   color: Colors.white,
+          //   child: Center(
+          //     child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text('\n\n${currUser?.email?.toString() ?? "No User Found"}'),
+            Text(
+              '\n\n${currUser?.emailVerified.toString() ?? "No User Found"}',
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Back'),
+            ),
+          ],
+        ),
       ),
-      body: const Center(child: Text('This is the profile view')),
     );
   }
 }
