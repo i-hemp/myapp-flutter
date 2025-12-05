@@ -1,12 +1,12 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
-enum MenuAction { logout }
+import 'package:myapp/constants/routes.dart';
 
-// ! 12:46
+enum MenuAction { logout, profile }
+
+// ! 13:24
 class NotesView extends StatefulWidget {
   const NotesView({super.key});
 
@@ -29,21 +29,26 @@ class _NotesViewState extends State<NotesView> {
                 case MenuAction.logout:
                   final shouldLogout = await showLogoutDialog(context);
                   devtools.log(shouldLogout.toString());
-                  if(shouldLogout){
+                  if (shouldLogout) {
                     await FirebaseAuth.instance.signOut();
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/login',
-                      (_) => false,
-                    );
+                    Navigator.of(
+                      context,
+                    ).pushNamedAndRemoveUntil(loginRoute, (_) => false);
                   }
 
+                case MenuAction.profile:
+                  Navigator.pushNamed(context, profileRoute);
               }
             },
             itemBuilder: (context) {
               return [
                 const PopupMenuItem<MenuAction>(
+                  value: MenuAction.profile,
+                  child: Text("Profile"),
+                ),
+                const PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
-                  child: Text("logout"),
+                  child: Text("Logout"),
                 ),
               ];
             },

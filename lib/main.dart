@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/profile_view.dart';
-import 'package:myapp/register_view.dart';
+import 'package:myapp/constants/routes.dart';
+import 'package:myapp/views/profile_view.dart';
+import 'package:myapp/views/register_view.dart';
 import 'package:myapp/views/notes_view.dart';
 import 'package:myapp/views/verify_email_view.dart';
 import 'firebase_options.dart';
@@ -20,13 +21,12 @@ void main() async {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
         useMaterial3: true,
       ),
-      initialRoute: '/',
+      home: const HomeView(),
       routes: {
-        '/': (context) => const HomeView(),
-        '/login': (context) => const LoginView(),
-        '/profile': (context) => const ProfileView(),
-        '/register': (context) => const RegisterView(),
-        '/notes': (context) => const NotesView(),
+        loginRoute: (context) => const LoginView(),
+        profileRoute: (context) => const ProfileView(),
+        registerRoute: (context) => const RegisterView(),
+        notesRoute: (context) => const NotesView(),
       },
     ),
   );
@@ -79,12 +79,7 @@ class _HomeViewState extends State<HomeView> {
               title: const Text('Home'),
               backgroundColor: Colors.green,
               actions: [
-                TextButton(
-                  onPressed: () => setState(() {
-                    Navigator.pushNamed(context, '/profile');
-                  }),
-                  child: const Text('P', style: TextStyle(color: Colors.white)),
-                ),
+                
               ],
             ),
             body: Center(
@@ -135,13 +130,13 @@ class _HomeViewState extends State<HomeView> {
                         children: [
                           ElevatedButton(
                             onPressed: () =>
-                                Navigator.pushNamed(context, '/register'),
+                                Navigator.pushNamed(context, registerRoute),
                             child: const Text('Register'),
                           ),
                           const SizedBox(height: 8),
                           ElevatedButton(
                             onPressed: () =>
-                                Navigator.pushNamed(context, '/login'),
+                                Navigator.pushNamed(context, loginRoute),
                             child: const Text('Login'),
                           ),
                         ],

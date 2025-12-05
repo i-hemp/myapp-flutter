@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer' as devtools show log;
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -60,10 +61,10 @@ class _RegisterViewState extends State<RegisterView> {
                       password: password,
                     );
 
-                print(userCredential);
+                devtools.log(userCredential.toString());
               } on FirebaseAuthException catch (e) {
-                print(
-                  'Firebase auth exception occured during register_______: ${e.code}',
+                devtools.log(
+                  'Firebase auth exception occured during register_______: ${e.code}'
                 );
               }
             },

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtools show log;
 
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({super.key});
@@ -30,8 +31,8 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                   const SnackBar(content: Text('Verification email sent.')),
                 );
                 await user?.reload();
-                print(user);
-                print(stateUser);
+                devtools.log(user.toString());
+                devtools.log(stateUser.toString());
                 setState(() {
                   stateUser = FirebaseAuth.instance.currentUser;
                 });
