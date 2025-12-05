@@ -22,23 +22,18 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     final currUser = FirebaseAuth.instance.currentUser;
-    // appBar: AppBar(
-    //   title: const Text('Profile'),
-    //   backgroundColor: Colors.red[400],
-    // ),
-    return Material(
-      color: Colors.white,
-      child: SafeArea(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        backgroundColor: Colors.red[400],
+      ),
+      body: Center(
         child: Column(
-          // Container(
-          //   color: Colors.white,
-          //   child: Center(
-          //     child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text('\n\n${currUser?.email?.toString() ?? "No User Found"}'),
             Text(
-              '\n\n${currUser?.emailVerified.toString() ?? "No User Found"}',
+              '\n\n${currUser!.emailVerified ? 'Ok verified' : "Not verified"}',
             ),
             TextButton(
               onPressed: () {
